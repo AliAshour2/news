@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:news/common/app_theme.dart';
 import 'package:news/screens/home_screen.dart';
 
 void main() {
@@ -20,6 +21,7 @@ class MyApp extends StatelessWidget {
         return MaterialApp(
           title: 'News',
           debugShowCheckedModeBanner: false,
+          theme: AppTheme.lightTheme,
           home: child,
         );
       },
