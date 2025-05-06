@@ -17,18 +17,24 @@ class CategoryCard extends StatelessWidget {
             borderRadius: BorderRadius.only(
                 topLeft: const Radius.circular(25),
                 topRight: const Radius.circular(25),
-                bottomRight:
-                    index.isOdd ? const Radius.circular(25) : const Radius.circular(0),
-                bottomLeft:
-                    index.isEven ? const Radius.circular(25) : const Radius.circular(0))),
+                bottomRight: index.isOdd
+                    ? const Radius.circular(25)
+                    : const Radius.circular(0),
+                bottomLeft: index.isEven
+                    ? const Radius.circular(25)
+                    : const Radius.circular(0))),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Image.asset(
-              categoryModel.imagePath,
-              width: 100.w,
-              fit: BoxFit.contain,
-            ),
+            if (categoryModel.imagePath != null)
+              Image.asset(
+                categoryModel.imagePath!,
+                width: 100.w,
+                fit: BoxFit.contain,
+              )
+            else
+              const Icon(Icons.image_not_supported,
+                  size: 50, color: Colors.grey),
             Text(
               categoryModel.title,
               style: Theme.of(context)

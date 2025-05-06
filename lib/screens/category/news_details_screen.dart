@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:news/common/app_colors.dart';
-import 'package:news/screens/category/models/news_model.dart';
+import 'package:news/screens/category/models/news/articels.dart';
 import 'package:timeago/timeago.dart' as timeago;
 
 class NewsDetailsScreen extends StatelessWidget {
-  const NewsDetailsScreen({super.key, required this.newsModel});
+  const NewsDetailsScreen({super.key, required this.articles});
 
-  final NewsModel newsModel;
+  final Articles articles;
 
   @override
   Widget build(BuildContext context) {
@@ -40,8 +40,8 @@ class NewsDetailsScreen extends StatelessWidget {
             // Hero image with gradient overlay
             Stack(
               children: [
-                Image.asset(
-                  newsModel.imagePath,
+                Image.network(
+                  articles.urlToImage ?? '',
                   height: 300.h,
                   width: double.infinity,
                   fit: BoxFit.cover,
@@ -67,7 +67,7 @@ class NewsDetailsScreen extends StatelessWidget {
                   left: 20.w,
                   right: 20.w,
                   child: Text(
-                    newsModel.title,
+                    articles.title ?? '',
                     style: TextStyle(
                       fontSize: 24.sp,
                       fontWeight: FontWeight.bold,
@@ -97,7 +97,7 @@ class NewsDetailsScreen extends StatelessWidget {
                         radius: 20.r,
                         backgroundColor: AppColors.primaryColor.withAlpha(50),
                         child: Text(
-                          newsModel.publisher.substring(0, 1),
+                          articles.author?.substring(0, 1) ?? '',
                           style: const TextStyle(
                             color: AppColors.primaryColor,
                             fontWeight: FontWeight.bold,
@@ -109,7 +109,7 @@ class NewsDetailsScreen extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            newsModel.publisher,
+                            articles.author ?? '',
                             style: TextStyle(
                               fontWeight: FontWeight.w600,
                               fontSize: 16.sp,
@@ -125,7 +125,8 @@ class NewsDetailsScreen extends StatelessWidget {
                               ),
                               SizedBox(width: 5.w),
                               Text(
-                                timeago.format(newsModel.publishedDate),
+                                timeago.format(
+                                    DateTime.parse(articles.publishedAt ?? '')),
                                 style: TextStyle(
                                   color: AppColors.grayColor,
                                   fontSize: 12.sp,
@@ -144,7 +145,7 @@ class NewsDetailsScreen extends StatelessWidget {
                           borderRadius: BorderRadius.circular(15.r),
                         ),
                         child: Text(
-                          newsModel.title ?? 'General',
+                          articles.title?.substring(0, 20) ?? 'General',
                           style: TextStyle(
                             color: AppColors.primaryColor,
                             fontWeight: FontWeight.w500,

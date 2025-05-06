@@ -12,39 +12,44 @@ class CategoryView extends StatelessWidget {
   Widget build(BuildContext context) {
     List<CategoryModel> categories = [
       CategoryModel(
-        id: '1',
+        id: 'sports',
         imagePath: AppAssets.ball,
         title: 'Sports',
         color: Colors.black,
       ),
       CategoryModel(
-        id: '2',
+        id: 'business',
         imagePath: AppAssets.business,
         title: 'Business',
         color: Colors.blue,
       ),
       CategoryModel(
-        id: '3',
-        imagePath: AppAssets.environment,
-        title: 'Enviroment',
+        id: 'entertainment',
+        title: 'Entertainment',
         color: Colors.greenAccent,
       ),
       CategoryModel(
-        id: '4',
+        id: 'health',
         imagePath: AppAssets.health,
         title: 'Health',
         color: Colors.redAccent,
       ),
       CategoryModel(
-        id: '5',
+        id: 'general',
         imagePath: AppAssets.politics,
-        title: 'Politics',
+        title: 'General',
         color: Colors.blueGrey,
       ),
       CategoryModel(
-        id: '6',
+        id: 'science',
         imagePath: AppAssets.science,
         title: 'Science',
+        color: Colors.deepOrange,
+      ),
+      CategoryModel(
+        id: 'technology',
+        imagePath: AppAssets.science,
+        title: 'Technology',
         color: Colors.deepOrange,
       ),
     ];
